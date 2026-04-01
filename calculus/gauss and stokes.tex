@@ -1,0 +1,191 @@
+\documentclass{article}
+\usepackage{ctex}
+\usepackage{amsmath}
+\usepackage{tikz}
+\usepackage{unicode-math}
+\usetikzlibrary{arrows.meta, decorations.markings,patterns}
+\begin{document}
+
+高斯公式与斯托克斯公式
+
+本节将要讲的两个公式,在一定意义上讲它们都是格林公式的推广,
+格林公式建立了平面上沿闭的回路的第一型曲线积分与回路所围的平面区域上的一二重积分之间的关系,
+而高斯公式建立了在封闭的曲面上的第二型曲面积分与曲面所围的空间区域上的三重积分之间的联系.
+斯托克斯公式则是把格林公式中的曲线由平面曲线推广到空间曲线,把格林公式中在平面区域上的二重积分推广为在以该空闻曲线为边界的曲面上的积分.
+
+1.高斯公式
+
+高斯公式也称为发散量定理,这一定理是由俄国数学家奥斯特洛格拉特斯基(Ostrogradsky,1801-1862)首先登文发表的,
+但高斯(Gauss)在奥斯特洛格拉特斯基之前早已发明了此定理,
+只是没有及时发表.故有些书上也称此定理为奥斯特洛格拉特斯基公式或奥-高公式
+
+定理1(高斯公式)
+设空间区域$\Omega$的边界是分片光滑的封闭曲面S,函数 $P(x,y,z),Q(x,y,z),R(x,y,z)$在$\Omega\cup S$上有一阶连续偏导数,则有高斯公式
+
+$$\oiint\limits_{s^+}P\:\mathrm{d}y\:\mathrm{d}z+Q\:\mathrm{d}z\:\mathrm{d}x+R\:\mathrm{d}x\:\mathrm{d}y=\iiint\limits_{n}\left(\frac{\partial P}{\partial x}+\frac{\partial Q}{\partial y}+\frac{\partial R}{\partial z}\right)\mathrm{d}V$$
+其中 $S^+$为边界曲面 S 的外侧.
+
+证 我们先对某些特殊情况证明这个公式.
+
+设空间区域$\Omega$是以曲面 S,为底,曲面$\mathcal{S}_2$为顶,母线平行于$z$轴的柱体,并假定它在 Oxy 平面上的投影区域为$D$(见图 8.40),
+
+$S_1,S_2$的方程分别为
+$$S_1: z= f_1( x, y), ( x, y) \in D;S _2: z= f_2( x, y), ( x, y) \in D.$$
+
+由三重积分的计算公式知,这时
+
+$$\iiint_{\Omega}\frac{\partial R}{\partial z}\mathrm{d}V=\iint_D\mathrm{d}\sigma\int_{f_1(x,y)}^{f_2(x,y)}\frac{\partial R}{\partial z}\mathrm{d}z$$
+$$=\iint_D\left[R\left(x,y,f_2(x,y)\right)-R\left(x,y,f_1(x,y)\right)\right]\mathrm{d}\sigma$$
+
+另一方面,这时$\Omega$的边界曲面$S$由$S_1,S_2$及$S_3$组成,其中$S_3$为柱体侧表面(见图 8.40).由曲面积分的计算公式知
+
+$$\underset{s^+}{\operatorname*{\operatorname*{\oiint}}}R\mathrm{d}x\mathrm{d}y=\underset{s_1^+}{\operatorname*{\operatorname*{\iint}}}R\mathrm{d}x\mathrm{d}y+\underset{s_2^+}{\operatorname*{\operatorname*{\iint}}}R\mathrm{d}x\mathrm{d}y+\underset{s_3^+}{\operatorname*{\operatorname*{\iint}}}R\mathrm{d}x\mathrm{d}y$$
+
+$$=-\iint_DR\left(x,y,f_1\left(x,y\right)\right)\mathrm{d}x\mathrm{d}y+\iint_DR\left(x,y,f_2\left(x,y\right)\right)\mathrm{d}x\mathrm{d}y+0$$
+$$=\iint_D\left[R\left(x,y,f_2\left(x,y\right)\right)-R\left(x,y,f_1\left(x,y\right)\right)\right]\mathrm{d}x\mathrm{d}y.\quad(8.17)$$
+
+(8.16)式和(8,17)式的右端为同一个二重积分,所以
+
+(8.18)
+
+$$\oint_{S^+}R\:\mathrm{d}x\:\mathrm{d}y=\iiint_{\Omega}\frac{\partial R}{\partial z}\mathrm{d}V.$$
+
+对于一般的区域$\Omega$,可作一些辅助曲面将$\Omega$ 分成若干个如图 8.40 所示的小区域,
+则在每个小区域上(8.18)式成立.然后将在各小区域上的等式相加就可推出在整个$\Omega$ 上(8.18)式仍然成立.
+
+同理可证
+
+$$\begin{aligned}\oiint_SP\mathrm{d}y\mathrm{d}z=\iiint_\Omega\frac{\partial P}{\partial x}\mathrm{d}V,\\\oiint_SQ\mathrm{d}z\mathrm{d}x=\iiint_\Omega\frac{\partial Q}{\partial y}\mathrm{d}V.\end{aligned}$$
+
+将(8.18)式,(8.19)式相加,即得到高斯公式.证毕.
+
+顺便指出,我们定义$\frac{\partial P}{\partial x}+\frac{\partial Q}{\partial v}+\frac{\partial R}{\partial z}$为向量函数
+
+$$F=(P(x,y,z),Q(x,y,z),R(x,y,z))$$
+
+的散度,记作 div$\boldsymbol{F}.$这样公式可写成
+
+$$\oiint_{s^+}\boldsymbol{F}\cdot\boldsymbol{n}\operatorname{dS}=\iiint_{\Omega}\operatorname{div\boldsymbol{F}}\operatorname{dV}.$$
+
+物理上称曲面积分$\iint_S\boldsymbol{F}\cdot n$dS 为向量场$\boldsymbol{F}(x,y,z)$通过曲面 S 的通量.上述公式说明,
+$F$通过闭曲面S 的通量,等于其散度在 S 所包围的区域。$\Omega$上的三重积分.
+利用高斯公式(8.15),我们可将第二型曲面积分的计算转化为三重积分的计算,一般说来,后者比前者好算.
+
+
+\newpage
+2.斯托克斯公式
+
+我们曾指出,斯托克斯(Stokes)公式是格林公式的种推广：把格林公式中的平面区域推厂到空间曲面,格林公式中的区域的边界曲线就自然推广为空间曲线,
+因而斯托克斯公式是联系空间曲面上的第二型曲面积分与在该曲面的边界线上的第一型曲线积分之间的关系式
+
+定理 2(斯托克斯公式) 设 S 为分片光滑的双侧曲面,其边界L 是一条或几条分段光滑的闭曲线.
+假定在 S 上取定一侧的单位法向量为$n$,再规定$L$的定向,使得$L$的定向与$n$的指向构成右手系
+(即将右手握拳,当拇指指向$n$ 时,其他四个手指的指向与 $L$的定向一致).
+记 $S^+$及$L^+$分别为给定上述定向后的 $S$ 及$L$.若 $P(x,y,z),Q(x,y,z)$及 $R(x,y,z)$是 $S+L$ 上的有一阶连续偏导数的函数,则有斯托克斯公式：
+
+$$\oint_{L^+}P\mathrm{~d}x+Q\mathrm{~d}y+R\mathrm{~d}z$$
+
+$$=\iint_{S^+}\left(\frac{\partial R}{\partial y}-\frac{\partial Q}{\partial z}\right)\mathrm{d}y\mathrm{d}z+\left(\frac{\partial P}{\partial z}-\frac{\partial R}{\partial x}\right)\mathrm{d}z\mathrm{d}x+\left(\frac{\partial Q}{\partial x}-\frac{\partial P}{\partial y}\right)\mathrm{d}x\mathrm{d}y$$
+
+证 为了证明定理,只须证明下列三个式子成立：
+
+$$\oint_{L^+}P\left(x\:,y\:,z\:\right)\mathrm{d}x=\iint_{S^+}\frac{\partial P}{\partial z}\mathrm{d}z\:\mathrm{d}x-\frac{\partial P}{\partial y}\mathrm{d}x\:\mathrm{d}y\:,$$
+$$\oint_{L^+}Q\left(x\:,y\:,z\:\right)\mathrm{d}y=\iint_{S^+}\frac{\partial Q}{\partial x}\mathrm{d}x\:\mathrm{d}y\:-\frac{\partial Q}{\partial z}\mathrm{d}y\:\mathrm{d}z\:,$$
+$$\oint_{L^+}R\left(x\:,y\:,z\:\right)\mathrm{d}z=\iint_{S^+}\frac{\partial R}{\partial y}\mathrm{d}y\:\mathrm{d}z-\frac{\partial R}{\partial x}\mathrm{d}z\:\mathrm{d}x\:.$$
+
+我们先证明(8.21)式.
+
+首先,假设$L$是一条闭曲线并且曲面 S 可由下列方程表出：
+$$z=f\left(x,y\right),\quad(x,y)\in D$$
+其中$D$为曲面 S 在$Ox$y 平面上的投影.记$D$的边界曲线为$C,C$ 也是S 的边界曲线L 在$Ox$y 平面上的投影.
+不妨设 S 取上侧,则曲线 $L^+$的定向如图 8.45 所示,而$C$的指向是逆时针的方向(见图 8.45).在以上假设下,
+显然有
+$$\oint_{L^+}P(x,y,z)dx=\oint_{C^+}P(x,y,f(x,y))dx$$ 
+
+上式左端为空间曲线积分,而右端为平面曲线积分.
+
+由上式及格林公式可推得
+
+$$\oint_{L^+}P\left(x,y,z\right)\mathrm{d}x=\oint_{C^+}P\left(x,y,f\left(x,y\right)\right)\mathrm{d}x$$
+$$=\iint_D\left[-\frac{\partial}{\partial y}P\left(x,y,f\left(x,y\right)\right)\right]\mathrm{d}x\mathrm{d}y=-\iint_D\left(\frac{\partial P}{\partial y}+\frac{\partial P}{\partial z}f_y\right)\mathrm{d}x\mathrm{d}y$$
+
+另一方面,由本章§5 中第二型曲面积分的计算公式(8.10),可得
+
+$$\iint\limits_{s^+}\frac{\partial P}{\partial x}\mathrm{d}z\:\mathrm{d}x-\frac{\partial P}{\partial y}\mathrm{d}x\:\mathrm{d}y=\iint\limits_D\left[\frac{\partial P}{\partial z}(-f_y)+\left(-\frac{\partial P}{\partial y}\right)\right]\mathrm{d}x\:\mathrm{d}y$$
+
+$$= - \iint \left ( \frac {\partial P}{\partial z}f_{y}+ \frac {\partial P}{\partial y}\right ) dxdy.$$
+
+(8.25)式和(8.26)式表明要证的等式(8.21)成立.
+
+其次,当曲面 S 可由方程
+
+$y=g\left(z,x\right),\quad(z,x)\in D_1,$或$x=h\left(y,z\right),\quad(y,z)\in D_2$
+
+表出时,用类似的方法可证明(8.21)式仍成立.
+
+最后,对于一般的分片光滑曲面S,我们总可将其分成有限个小曲面,使这些小曲面可由上述的三种方程(8.24),(8.27)和(8.28)中至少一个表示,
+于是可证在这些小曲面上,公式(8,21)成立,再由曲线积分与曲面积分的可加性,即可推出对曲面S,公式(8.21)成立,
+用类似的方法,可证等式(8.22),(8.23)成立.再将三式相加,即得斯托克斯公式(8.20).证毕
+
+为便于记忆，斯托克斯公式地可写成
+
+$$\oint_{L^+}P\mathrm{d}x+Q\mathrm{d}y+R\mathrm{d}z=\iint_{S^+}\begin{vmatrix}\mathrm{d}y\mathrm{d}z&&\mathrm{d}z\mathrm{d}x&&\mathrm{d}x\mathrm{d}y\\\\\frac{\partial}{\partial x}&&\frac{\partial}{\partial y}&&\frac{\partial}{\partial z}\\\\P&&Q&&R\end{vmatrix}$$
+
+其中记号
+
+$$\begin{vmatrix}
+\mathrm{d}y\,\mathrm{d}z & \mathrm{d}z\,\mathrm{d}x & \mathrm{d}x\,\mathrm{d}y \\
+\frac{\partial}{\partial x} & \frac{\partial}{\partial y} & \frac{\partial}{\partial z} \\
+P & Q & R
+\end{vmatrix}$$
+
+可形式地看成一个三阶行列式，按第一行展开．
+
+如果我们记 $\boldsymbol{F} = (P, Q, R)$，并定义
+
+$$\operatorname{rot}\boldsymbol{F} = \left( \frac{\partial R}{\partial y} - \frac{\partial Q}{\partial z},\; \frac{\partial P}{\partial z} - \frac{\partial R}{\partial x},\; \frac{\partial Q}{\partial x} - \frac{\partial P}{\partial y} \right),$$
+
+那么斯托克斯公式又可写成
+
+$$\oint_{L^+} P\,\mathrm{d}x + Q\,\mathrm{d}y + R\,\mathrm{d}z = \iint_{S^+} \operatorname{rot}\boldsymbol{F} \cdot \mathrm{d}\boldsymbol{S}.$$
+
+为了便于记忆，也可以将 $\operatorname{rot}\boldsymbol{F}$ 用三阶行列式表出：
+
+$$\operatorname{rot}\boldsymbol{F} =
+\begin{vmatrix}
+\boldsymbol{i} & \boldsymbol{j} & \boldsymbol{k} \\
+\frac{\partial}{\partial x} & \frac{\partial}{\partial y} & \frac{\partial}{\partial z} \\
+P & Q & R
+\end{vmatrix},$$
+
+其中 $\boldsymbol{i}, \boldsymbol{j}, \boldsymbol{k}$ 是三个单位坐标向量．
+
+rot$F$ 称作向量场$F$ 的旋度
+
+假如已知 $S^+$指定一侧的法向量之方向余弦为(cosα$,\cos\beta,\cos\gamma$),那么
+
+$$\mathrm{d}S=(\cos\alpha,\cos\beta,\cos\gamma)\mathrm{d}S.$$
+
+而公式(8.30)又可写成
+
+$$\oint_LP\mathrm{d}x+Q\mathrm{d}y+R\mathrm{d}z=\iint_{S^+}\begin{vmatrix}\cos\alpha&\cos\beta&\cos\gamma\\\frac{\partial}{\partial x}&\frac{\partial}{\partial y}&\frac{\partial}{\partial z}\\P&Q&R\end{vmatrix}\mathrm{d}S$$
+
+
+若直接求空间的第二型曲线积分不方便时，可考虑用斯托克斯公式将它转化为求曲面积分.
+
+最后指出斯托克斯公式的一个特殊情况：当曲线 L 恰好是 Oxy 平面上的一条平面曲线，$L$所围的曲面 S 恰好是 Oxy 平面上的一个区域时，$L$ 的切向量的第三个分量 d$z=0$,dS 在$O_\mathrm{yz}$ 平面及Ozx 平面上的有向投影dydz 及 d$z$d$x$ 也都等于 0,这时，斯托克斯公式简化为
+
+$$\oint_{L^+}P\:\mathrm{d}x+Q\:\mathrm{d}y=\iint_D\left(\frac{\partial Q}{\partial x}-\frac{\partial P}{\partial y}\right)\mathrm{d}x\:\mathrm{d}y\:,$$
+
+上式即为格林公式.故格林公式可看成斯托克斯公式的特例.
+
+
+
+
+
+
+
+
+
+
+\end{document}
