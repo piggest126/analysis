@@ -1,0 +1,224 @@
+\documentclass{article}
+\usepackage{ctex}
+\usepackage{amsmath}
+\usepackage{booktabs}
+\usepackage{tikz}
+\usepackage{unicode-math}
+\usetikzlibrary{arrows.meta, decorations.markings,patterns}
+\begin{document}
+
+2.基本技巧
+
+(1)利用对称性及重心公式简化计算
+
+(2)利用积分与路径无关的等价条件
+
+(3)利用格林公式（注意加辅助线的技巧
+
+(4)利用斯托克斯公式
+
+(5)利用两类曲线积分的联系公式
+
+1.$$I=\int_{\varGamma}(x^2+y+z^2)\rm{d}s; \quad\varGamma:\begin{cases}x^2+y^2+z^2=a^2,\\x+y+z=0.&\end{cases}$$
+
+\newpage
+
+3.假设$L$是以原点为中心，$a$为半径的上半圆周
+
+(1) 若$L$为顺时针方向,如何计算下述积分:
+
+$$I_1 = \int_L (x^2 - 3y)dx + (y^2 - x)dy$$
+
+(2) 若$L$为逆时针方向,如何计算下述积分(利用格林公式)
+
+$$I_2 = \int_L (x^2 - y + y^2)dx + (y^2 - x)dy$$
+
+\newpage
+
+4.$$I = \int_L (e^x \sin y - 2y) dx + (e^x \cos y - 2) dy$$
+
+其中 $L$ 为上半圆周 $(x - a)^2 + y^2 = a^2, y \geq 0$, 沿逆时针方向
+
+\newpage
+
+5.设在右半平面 $x>0$ 内，力 $\vec{F}=-\frac{k}{\rho^{3}}(x, y)$ 构成力场，其中 $k$ 为常数
+
+$\quad \rho=\sqrt{x^{2}+y^{2}}$，证明在此力场中场力所作的功与所取的路径无关。
+
+解：$\vec{F}$沿右半平面内任意有向路径 $L$ 所作的功为
+
+$$W = \int_L -\frac{k}{\rho^3} (x dx + y dy)$$
+
+令 
+$$P = -\frac{kx}{\rho^3},\ Q = -\frac{ky}{\rho^3}$$
+
+易证 
+$$\frac{\partial P}{\partial y} = -\frac{3kxy}{\rho^5} = \frac{\partial Q}{\partial x}\ (\ x > 0\ )$$
+
+故结论成立。
+
+\newpage
+
+6. 求力 $\vec{F} = (y, z, x)$ 沿有向闭曲线 $\Gamma$ 所作的功
+
+其中 $\Gamma$ 为平面 $x + y + z = 1$ 被三个坐标面所截成三角形的整个边界, 从 $z$ 轴正向看去沿顺时针方向.
+
+解：方法1
+
+$$W = \oint_{\Gamma} ydx + zdy + xdz$$
+
+利用对称性
+
+
+方法2.利用斯托克斯公式
+
+设三角形区域为$\Sigma$，方向向上，则
+
+$$W=\oint_{\Gamma}ydx+zdy+xdz=-\iint_{\Sigma}\begin{vmatrix}\frac{1}{\sqrt{3}}&\frac{1}{\sqrt{3}}&\frac{1}{\sqrt{3}}\\\frac{\partial}{\partial x}&\frac{\partial}{\partial y}&\frac{\partial}{\partial z}\\y&z&x\end{vmatrix}dS$$
+
+$$=-\frac{1}{\sqrt{3}}\iint_{\Sigma}(-3)dS=\sqrt{3}\iint_{D_{x+y}}\sqrt{3}dxdy=\frac{3}{2}$$
+
+
+\newpage
+
+
+1. 设  $\Sigma$ 是 四 面 体 $x+ y+ z\leq 1, x\geq 0, y\geq 0, z\geq 0$的 表 面 ,  计 算  
+
+$$I= \oiint _{\Sigma }\frac 1{( 1+ x+ y) ^2}dS$$
+
+解:在四面体的四个面上
+
+\begin{table}[htbp]
+  \centering
+  \caption{四面体各面的平面方程、面积元与投影域}
+  \label{tab:tetrahedron_surface}
+  \renewcommand{\arraystretch}{1.8} % 加大行距，可按需调整
+  \begin{tabular}{ccc}
+    \toprule
+    \textbf{平面方程} & \textbf{$dS$} & \textbf{投影域} \\
+    \midrule
+    $z = 1 - x - y$ & $\sqrt{3}\,dxdy$ & $D_{xy}: 0 \leq x \leq 1,\ 0 \leq y \leq 1-x$ \\
+    \midrule
+    $z = 0$ & $dxdy$ & 同上（$D_{xy}$） \\
+    \midrule
+    $y = 0$ & $dzdx$ & $D_{zx}: 0 \leq z \leq 1,\ 0 \leq x \leq 1-z$ \\
+    \midrule
+    $x = 0$ & $dydz$ & $D_{yz}: 0 \leq z \leq 1,\ 0 \leq y \leq 1-z$ \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+$$\begin{aligned}I&=(\sqrt{3}+1)\int_0^1dx\int_0^{1-x}\frac{1}{(1+x+y)^2}dy\\&\quad+\int_0^1dz\int_0^{1-z}\frac{1}{(1+x)^2}dx\\&\quad+\int_0^1dz\int_0^{1-z}\frac{1}{(1+y)^2}dy\\&=\frac{3-\sqrt{3}}{2}+(\sqrt{3}-1)\ln2\end{aligned}$$
+
+\newpage
+
+2. 计算 $\iint_{\Sigma} xdydz + ydzdx + zdxdy$
+
+其中 $\Sigma$ 为半球面 $z = \sqrt{R^2 - x^2 - y^2}$ 的上侧。
+
+解：以半球底面$\Sigma_0$为辅助面，且取下侧
+
+记半球域为$\Omega$,利用高斯公式有
+
+$$\iint_{\Sigma} xdydz + ydzdx + zdxdy=\iiint_\Omega3dxdydz-\iint_{\Sigma_0}xdydz+ydzdx+zdxdy$$
+
+$$=3\cdot\frac{2}{3}\pi R^3-0=2\pi R^3$$
+
+\newpage
+
+3. 设 $\Sigma$ 为简单闭曲面, $\vec{a}$ 为任意固定向量, $\vec{n}$ 为 $\Sigma$ 的单位外法向量, 试证 $\oiint_{\Sigma} \cos(\vec{n}, \vec{a}) dS = 0.$
+
+证明: 设 $\vec{n} = (\cos \alpha, \cos \beta, \cos \gamma)$
+$\vec{a} = (\cos \alpha', \cos \beta', \cos \gamma')$
+
+$$\oiint_{\Sigma} \cos(\vec{n}, \vec{a}) dS = \oiint_{\Sigma} \vec{n} \cdot \vec{a}^0 dS$$
+$$= \oiint_{\Sigma} (\cos \alpha \cos \alpha' + \cos \beta \cos \beta' + \cos \gamma \cos \gamma') dS$$
+$$= \oiint_{\Sigma} \cos \alpha' dydz + \cos \beta' dzdx + \cos \gamma' dxdy$$
+$$= \iiint_{\Omega} \left[ \frac{\partial}{\partial x} (\cos \alpha') + \frac{\partial}{\partial y} (\cos \beta') + \frac{\partial}{\partial z} (\cos \gamma') \right] dV$$
+$$=0$$
+
+
+\newpage
+
+例4.计算曲面积分
+
+$$I=\iint_{\Sigma}\frac{x}{r^3}dydz+\frac{y}{r^3}dzdx+\frac{z}{r^3}dxdy$$
+
+其中，$r= \sqrt x^2+ y^2+ z^2$, $\Sigma {: }x^2+ y^2+ z^2= R^2$取外侧.
+
+$$\begin{aligned}\text{解:}&I=\frac{1}{R^{3}}\oint_{\Sigma}xdydz+ydzdx+zdxdy\\&=\frac{1}{R^{3}}\iiint_{\Omega}3dxdydz=4\pi.\end{aligned}$$
+
+思考：本题$\Sigma$改为椭球面$\frac{x^2}{a^2}+\frac{y^2}{b^2}+\frac{z^2}{c^2}=1$时，应如何计算？
+
+提示：在椭球面内作辅助小球面 $x^2+y^2+z^2=\varepsilon^2$取内侧，然后用高斯公式。
+
+例5.设$\Sigma$是曲面$1-\frac z5=\frac{(x-2)^2}{16}+\frac{(y-1)^2}9$ (z>0),取上侧
+
+计算 $I= \iint _\Sigma \frac {xdydz+ ydzdx+ zdxdy}{\left ( x^2+ y^2+ z^2\right ) ^3/ z}$
+
+
+解：取足够小的正数ε，作曲面
+
+$$\Sigma_1 : z = \sqrt{\varepsilon^2 - x^2 - y^2} \quad \text{取下侧}$$
+
+使其包在 Σ 内，Σ₂ 为 xoy 平面上夹于
+
+Σ 与 Σ₁ 之间的部分，且取下侧，则
+
+$$\begin{gathered}I=\oint_{\Sigma+\Sigma_1+\Sigma_2}-\iint_{\Sigma_1}-\iint_{\Sigma_2}\\=\iiint_\Omega0dxdydz-\frac{1}{\varepsilon^3}\iint_{\Sigma_1}xdydz+ydzdx+zdxdy\\-\iint_{\Sigma_2}\frac{0\cdot dxdy}{\left(x^2+y^2\right)^{3/2}}\end{gathered}$$
+
+第二项添加辅助面，再用高斯公式计算，得
+
+$$I = -\frac{1}{\varepsilon^3}(-2\pi\varepsilon^3)= 2\pi.$$
+
+\newpage
+
+6.计算曲面积分$I=\oint_{\Sigma}[(x+y)^2+z^2+2yz]dS$,其中$\Sigma$ 是球面 $x^2+y^2+z^2=2x+2z.$
+
+解：
+
+$$\begin{aligned}\text{I}&=\oint_{\Sigma}[(x^{2}+y^{2}+z^{2})+2xy+2yz\:]\:dS\\&=\oint_{\Sigma}(2x+2z)dS\quad+2\oint_{\Sigma}(x+z)ydS\end{aligned}$$
+
+$$=2(\overline{x}+\overline{z})\oint_{\Sigma}dS\quad+0=32\pi$$
+
+\newpage
+
+7. 设 $L$ 是平面 $x + y + z = 2$ 与柱面 $|x| + |y| = 1$ 的交线 从 $z$ 轴正向看去, $L$ 为逆时针方向, 计算
+
+$$I = \oint_L (y^2 - z^2)dx + (2z^2 - x^2)dy + (3x^2 - y^2)dz$$
+
+解：记$\Sigma$为平面$x+y+z=2$上$L$所围部分的上侧
+
+$D$为$\Sigma$在 xoy 面上的投影.由斯托克斯公式
+
+$$\begin{aligned}I&=\iint_{\Sigma}\begin{vmatrix}\frac{1}{\sqrt{3}}&\frac{1}{\sqrt{3}}&\frac{1}{\sqrt{3}}\\\frac{\partial}{\partial x}&\frac{\partial}{\partial y}&\frac{\partial}{\partial z}\\y^{2}-z^{2}&2z^{2}-x^{2}&3x^{2}-y^{2}\end{vmatrix}dS\\&=-\frac{2}{\sqrt{3}}\iint_{\Sigma}(4x+2y+3z)dS\end{aligned}$$
+
+\newpage
+
+8.地球的一个侦察卫星携带的广角高分辨率摄象机能监视其"视线"所及地球表面的每一处的景象并摄像,若地球半径为R.卫星距地球表面高度为H=0.25R.卫星绕地球一周的时间为T,试求
+
+(1).在任一固定时刻，此卫星能监视的地球表面积是多少？
+
+(2).在$\frac T3$的时间内，卫星监视的地球表面积是多少？
+
+$$S_1=\int_0^{2\pi}\mathrm{d}\theta\int_0^aR^2\sin\phi\mathrm{d}\phi\quad=2\pi R^2(1-\cos\alpha)=\frac{2\pi}{5}R^2$$
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}
+
+
+
